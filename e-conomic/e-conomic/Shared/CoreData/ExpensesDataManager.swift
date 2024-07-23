@@ -15,7 +15,7 @@ final class ExpensesDataManager {
     private init() {
         persistentContainer = NSPersistentContainer(name: "ExpensesDataModel")
         persistentContainer.loadPersistentStores { (storeDescription, error) in
-            if let error{
+            if let error {
                 fatalError("Error: \(error.localizedDescription)")
             }
         }

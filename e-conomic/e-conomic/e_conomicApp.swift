@@ -11,6 +11,7 @@ import SwiftUI
 struct e_conomicApp: App {
     var body: some Scene {
         WindowGroup {
+            ExpensesListView()
         }
     }
 }
