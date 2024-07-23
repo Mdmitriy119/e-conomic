@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol ExpensesListViewModelServicing: ObservableObject {
+    var isShowingAddExpenseView: Bool { get set }
+}
+
+final class ExpensesListViewModel: ExpensesListViewModelServicing {
+    @Published var isShowingAddExpenseView: Bool = false
+
+    init() {
+        
+    }
+}

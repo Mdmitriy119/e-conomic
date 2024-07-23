@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+protocol ExpensesListViewTheme {
+    
+}
+
+struct ExpensesListViewThemeItem: ExpensesListViewTheme {
+    
+    init() {
+        
+    }
+}
