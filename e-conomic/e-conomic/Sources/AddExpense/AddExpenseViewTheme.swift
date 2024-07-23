@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+protocol AddExpenseViewTheme {
+    
+}
+
+struct AddExpenseViewThemeItem: AddExpenseViewTheme {
+    
+    
+}

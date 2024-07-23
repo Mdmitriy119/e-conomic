@@ -13,8 +13,4 @@ protocol ExpensesListViewModelServicing: ObservableObject {
 
 final class ExpensesListViewModel: ExpensesListViewModelServicing {
     @Published var isShowingAddExpenseView: Bool = false
-
-    init() {
-        
-    }
 }

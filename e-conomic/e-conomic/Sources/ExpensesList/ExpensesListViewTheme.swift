@@ -12,8 +12,4 @@ protocol ExpensesListViewTheme {
 }
 
 struct ExpensesListViewThemeItem: ExpensesListViewTheme {
-    
-    init() {
-        
-    }
 }
