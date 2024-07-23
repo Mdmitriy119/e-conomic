@@ -19,7 +19,8 @@
 		72EB62002C4FEA0B0099C9F9 /* ExpenseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB61FF2C4FEA0B0099C9F9 /* ExpenseDetailsViewModel.swift */; };
 		72EB62022C4FEA540099C9F9 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB62012C4FEA540099C9F9 /* AddExpenseView.swift */; };
 		72EB62042C4FEA600099C9F9 /* ExpenseDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB62032C4FEA600099C9F9 /* ExpenseDetailsView.swift */; };
-		72EB62082C4FEB310099C9F9 /* e-conomic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72EB62062C4FEB310099C9F9 /* e-conomic.xcdatamodeld */; };
+		72EB62082C4FEB310099C9F9 /* ExpensesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72EB62062C4FEB310099C9F9 /* ExpensesDataModel.xcdatamodeld */; };
+		72EB620F2C4FEE4C0099C9F9 /* ExpensesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB620E2C4FEE4C0099C9F9 /* ExpensesDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		72EB62012C4FEA540099C9F9 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		72EB62032C4FEA600099C9F9 /* ExpenseDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsView.swift; sourceTree = "<group>"; };
 		72EB62072C4FEB310099C9F9 /* Expense.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Expense.xcdatamodel; sourceTree = "<group>"; };
+		72EB620E2C4FEE4C0099C9F9 /* ExpensesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +139,18 @@
 		72EB62052C4FEAFB0099C9F9 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				72EB62062C4FEB310099C9F9 /* e-conomic.xcdatamodeld */,
+				72EB620B2C4FEE1B0099C9F9 /* CoreData */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		72EB620B2C4FEE1B0099C9F9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				72EB62062C4FEB310099C9F9 /* ExpensesDataModel.xcdatamodeld */,
+				72EB620E2C4FEE4C0099C9F9 /* ExpensesDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,12 +227,13 @@
 				72EB61F42C4FE9D70099C9F9 /* ExpensesListViewModel.swift in Sources */,
 				72EB62002C4FEA0B0099C9F9 /* ExpenseDetailsViewModel.swift in Sources */,
 				72EB61FA2C4FE9F70099C9F9 /* AddExpenseViewModel.swift in Sources */,
+				72EB620F2C4FEE4C0099C9F9 /* ExpensesDataManager.swift in Sources */,
 				72EB61F22C4FE9CF0099C9F9 /* ExpensesListViewTheme.swift in Sources */,
 				72EB61FE2C4FEA050099C9F9 /* ExpenseDetailsViewTheme.swift in Sources */,
 				72EB62042C4FEA600099C9F9 /* ExpenseDetailsView.swift in Sources */,
 				72EB62022C4FEA540099C9F9 /* AddExpenseView.swift in Sources */,
 				72EB61F02C4FE9C50099C9F9 /* ExpensesListView.swift in Sources */,
-				72EB62082C4FEB310099C9F9 /* e-conomic.xcdatamodeld in Sources */,
+				72EB62082C4FEB310099C9F9 /* ExpensesDataModel.xcdatamodeld in Sources */,
 				72EB61F82C4FE9F00099C9F9 /* AddExpenseViewTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,13 +444,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		72EB62062C4FEB310099C9F9 /* e-conomic.xcdatamodeld */ = {
+		72EB62062C4FEB310099C9F9 /* ExpensesDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				72EB62072C4FEB310099C9F9 /* Expense.xcdatamodel */,
 			);
 			currentVersion = 72EB62072C4FEB310099C9F9 /* Expense.xcdatamodel */;
-			path = "e-conomic.xcdatamodeld";
+			path = ExpensesDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
