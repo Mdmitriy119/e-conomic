@@ -1,5 +1,5 @@
 //
-//  ImagePickerView.swift
+//  PhotoPickerView.swift
 //  e-conomic
 //
 //  Created by Dumitru Manea on 23.07.2024.
@@ -7,41 +7,41 @@
 
 import SwiftUI
 
-struct ImagePickerView: UIViewControllerRepresentable {
+struct PhotoPickerView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     private let sourceType: UIImagePickerController.SourceType
-    @Binding private var selectedImage: UIImage?
+    @Binding private var photoData: NSData?
     
-    init(sourceType: UIImagePickerController.SourceType, selectedImage: Binding<UIImage?>) {
+    init(sourceType: UIImagePickerController.SourceType, photoData: Binding<NSData?>) {
         self.sourceType = sourceType
-        self._selectedImage = selectedImage
+        self._photoData = photoData
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<PhotoPickerView>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = sourceType
         imagePicker.delegate = context.coordinator
 
         return imagePicker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerView>) { }
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<PhotoPickerView>) { }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
 
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        private let parent: ImagePickerView
+        private let parent: PhotoPickerView
 
-        init(parent: ImagePickerView) {
+        init(parent: PhotoPickerView) {
             self.parent = parent
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
+                parent.photoData = image.asNSData
             }
 
             parent.presentationMode.wrappedValue.dismiss()
@@ -50,5 +50,5 @@ struct ImagePickerView: UIViewControllerRepresentable {
 }
 
 #Preview {
-    ImagePickerView(sourceType: .camera, selectedImage: .constant(UIImage()))
+    PhotoPickerView(sourceType: .camera, photoData: .constant(nil))
 }
