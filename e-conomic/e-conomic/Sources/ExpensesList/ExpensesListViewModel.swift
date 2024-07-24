@@ -8,10 +8,11 @@
 import CoreData
 
 protocol ExpensesListViewModelServicing: ObservableObject {
-    var expenses: [Expense] { get set }
+    var expenses: [ExpensePresentable] { get set }
     var isShowingAddExpenseView: Bool { get set }
     
     func connect()
+    func deleteExpenses(at offsets: IndexSet)
 }
 
 final class ExpensesListViewModel: NSObject, ExpensesListViewModelServicing {
@@ -20,10 +21,11 @@ final class ExpensesListViewModel: NSObject, ExpensesListViewModelServicing {
     
     // MARK: - Public properties
     @Published var isShowingAddExpenseView: Bool = false
-    @Published var expenses: [Expense] = []
+    @Published var expenses: [ExpensePresentable] = []
     
+    // MARK: - Initializer
     init(isShowingAddExpenseView: Bool = false,
-         expenses: [Expense] = [],
+         expenses: [ExpensePresentable] = [],
          dataManager: ExpensesDataManagerServicing = ExpensesDataManager.shared) {
         self.isShowingAddExpenseView = isShowingAddExpenseView
         self.expenses = expenses
@@ -39,11 +41,19 @@ extension ExpensesListViewModel {
         try? dataManager.fetchResultsController.performFetch()
         expenses = dataManager.fetchResultsController.fetchedObjects ?? []
     }
+    
+    func deleteExpenses(at offsets: IndexSet) {
+        for offset in offsets {
+            if let expense = expenses[offset] as? Expense {
+                dataManager.delete(expense: expense)
+            }
+        }
+    }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension ExpensesListViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        expenses = controller.fetchedObjects as? [Expense] ?? []
+        expenses = controller.fetchedObjects as? [ExpensePresentable] ?? []
     }
 }
