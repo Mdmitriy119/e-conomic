@@ -20,17 +20,23 @@ struct ExpensesListView<VM: ExpensesListViewModelServicing>: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.expenses, id: \.self) { expense in
+                ForEach(viewModel.expenses, id: \.date) { expense in
                     NavigationLink {
-                        ExpenseDetailsView()
+                        let viewModel = ExpenseDetailsViewModel(expense: expense)
+                        ExpenseDetailsView(viewModel: viewModel)
                     } label: {
                         expenseView(for: expense)
                     }
                 }
+                .onDelete(perform: viewModel.deleteExpenses(at:))
             }
             .navigationTitle(theme.navBarTitle)
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
                     rightBarButtonView
                 }
             }
@@ -52,11 +58,10 @@ private extension ExpensesListView {
             viewModel.isShowingAddExpenseView.toggle()
         } label: {
             Text(theme.rightBarButtonTitle)
-                .foregroundColor(theme.rightBarButtonTitleColor)
         }
     }
     
-    func expenseView(for expense: Expense) -> some View {
+    func expenseView(for expense: ExpensePresentable) -> some View {
         HStack {
             Group {
                 if let photoData = expense.photo,
@@ -80,9 +85,15 @@ private extension ExpensesListView {
                     .font(theme.titleFont)
                     .foregroundColor(theme.titleColor)
                 
-                Text("\(expense.total.stringWith2Decimals) \(expense.currency)")
-                    .font(theme.totalFont)
-                    .foregroundColor(theme.totalColor)
+                HStack {
+                    Text("\(expense.total.stringWith2Decimals) \(expense.currency)")
+                        .font(theme.totalFont)
+                        .foregroundColor(theme.totalColor)
+                    Spacer()
+                    Text(expense.date, style: .date)
+                        .font(theme.totalFont)
+                        .foregroundColor(theme.totalColor)
+                }
             }
         }
     }

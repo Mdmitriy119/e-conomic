@@ -15,13 +15,14 @@ protocol ExpensesListViewThemeStringsServicing {
 }
 
 protocol ExpensesListViewThemeStyleServicing {
-    var rightBarButtonTitleColor: Color { get }
     var placeholderImage: Image { get }
     var imageSize: CGFloat { get }
     var titleFont: Font { get }
     var titleColor: Color { get }
     var totalFont: Font { get }
     var totalColor: Color { get }
+    var dateFont: Font { get }
+    var dateColor: Color { get }
 }
 
 
@@ -41,10 +42,6 @@ extension ExpensesListViewThemeItem {
 // MARK: - Style servicing
 extension ExpensesListViewTheme {
     var navigationViewAccentColor: Color {
-        Color.eConomicPrimary
-    }
-    
-    var rightBarButtonTitleColor: Color {
         Color.eConomicPrimary
     }
     
@@ -69,6 +66,14 @@ extension ExpensesListViewTheme {
     }
     
     var totalColor: Color {
+        Color.eConomicTertiary
+    }
+    
+    var dateFont: Font {
+        Font.system(size: 12, weight: .regular)
+    }
+    
+    var dateColor: Color {
         Color.eConomicTertiary
     }
 }

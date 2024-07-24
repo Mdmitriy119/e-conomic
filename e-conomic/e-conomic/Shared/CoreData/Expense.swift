@@ -7,7 +7,16 @@
 
 import CoreData
 
-final class Expense: NSManagedObject {
+protocol ExpensePresentable {
+    var title: String { get set }
+    var details: String { get set }
+    var total: Double { get set }
+    var currency: String { get set }
+    var date: Date { get set }
+    var photo: NSData? { get set }
+}
+
+final class Expense: NSManagedObject, ExpensePresentable {
     @NSManaged var title: String
     @NSManaged var details: String
     @NSManaged var total: Double
