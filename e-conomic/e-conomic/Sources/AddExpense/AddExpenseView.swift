@@ -10,8 +10,10 @@ import SwiftUI
 struct AddExpenseView: View {
     private let theme: AddExpenseViewTheme
     @ObservedObject private var viewModel: AddExpenseViewModel
+    @Environment(\.presentationMode) var presentationMode
     
-    init(theme: AddExpenseViewTheme = AddExpenseViewThemeItem(), viewModel: AddExpenseViewModel = AddExpenseViewModel()) {
+    init(theme: AddExpenseViewTheme = AddExpenseViewThemeItem(),
+         viewModel: AddExpenseViewModel = AddExpenseViewModel()) {
         self.theme = theme
         self.viewModel = viewModel
     }
@@ -19,39 +21,110 @@ struct AddExpenseView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Title") {
-                    TextField("Enter your title here", text: $viewModel.title)
+                titleSection
+                detailsSection
+                currencySection
+                totalSection
+                photoSection
+            }
+            .tint(Color.eConomicTertiary)
+            .navigationTitle(theme.navBarTitle)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    leftBarButtonView
                 }
                 
-                Section(header: Text("Details"), footer: Text("Details are optional.")) {
-                    TextEditor(text: $viewModel.details)
-                }
-                
-                Section("Currency") {
-                    Picker("Select your currency", selection: $viewModel.currency) {
-                        ForEach(viewModel.availableCurrencies, id: \.self) { currency in
-                            Text(currency)
-                        }
-                    }
-                }
-                
-                Section("Total") {
-                    TextField("How much you spent?", value: $viewModel.total, format: .number)
-                        .keyboardType(.decimalPad)
+                ToolbarItem(placement: .topBarTrailing) {
+                    rightBarButtonView
                 }
             }
-            .navigationTitle("Add new expense")
-            .toolbar {
-                Button {
-                    print("Save")
-                } label: {
-                    Text("Save")
-                        .foregroundColor(Color.eConomicPrimary)
+            .sheet(isPresented: $viewModel.isShowingPhotoPickerView) {
+                PhotoPickerView(sourceType: .photoLibrary, photoData: $viewModel.photoData)
+            }
+        }
+        .onAppear {
+            viewModel.connect()
+        }
+    }
+}
+
+// MARK: - Navigation bar components
+private extension AddExpenseView {
+    var leftBarButtonView: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text(theme.leftBarButtonTitle)
+                .foregroundColor(theme.leftBarButtonColor)
+        }
+    }
+    
+    var rightBarButtonView: some View {
+        Button {
+            viewModel.onSaveButtonTap.send()
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text(theme.rightBarButtonTitle)
+                .foregroundColor(theme.rightBarButtonColor)
+        }
+    }
+}
+
+// MARK: - Form components
+private extension AddExpenseView {
+    var titleSection: some View {
+        Section(theme.titleSectionHeaderText) {
+            TextField(theme.titleTextFieldPlaceholderText, text: $viewModel.title)
+        }
+    }
+    
+    var detailsSection: some View {
+        Section(header: Text(theme.detailsSectionHeaderText), footer: Text(theme.detailsSectionsFooterText)) {
+            TextEditor(text: $viewModel.details)
+        }
+    }
+    
+    var currencySection: some View {
+        Section(theme.currencySectionHeaderText) {
+            Picker(theme.currencyPickerText, selection: $viewModel.currency) {
+                ForEach(viewModel.availableCurrencies, id: \.self) { currency in
+                    Text(currency)
                 }
             }
         }
     }
+    
+    var totalSection: some View {
+        Section(theme.totalSectionHeaderText) {
+            TextField(theme.totalTextFieldPlaceholderText, value: $viewModel.total, format: .number)
+                .keyboardType(.decimalPad)
+        }
+    }
+    
+    var photoSection: some View {
+        Section(theme.photoSectionHeaderText) {
+            VStack(alignment: .center) {
+                Button {
+                    viewModel.isShowingPhotoPickerView.toggle()
+                } label: {
+                    Text(theme.photoSectionButtonTitle)
+                        .font(theme.photoButtonTitleFont)
+                        .foregroundColor(theme.photoButtonTitleColor)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                if let photoData = viewModel.photoData,
+                   let uiImage = UIImage(data: Data(referencing: photoData)) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+        }
+        .listRowBackground(theme.photoSectionBackgroundColor)
+    }
 }
+
 
 #Preview {
     AddExpenseView()

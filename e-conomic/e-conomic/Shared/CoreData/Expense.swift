@@ -9,7 +9,7 @@ import CoreData
 
 final class Expense: NSManagedObject {
     @NSManaged var title: String
-    @NSManaged var details: String?
+    @NSManaged var details: String
     @NSManaged var total: Double
     @NSManaged var currency: String
     @NSManaged var date: Date

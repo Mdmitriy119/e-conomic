@@ -57,7 +57,7 @@ final class AddExpenseViewModel: AddExpenseViewModelServicing {
 // MARK: - Computed properties
 extension AddExpenseViewModel {
     var availableCurrencies: [String] {
-        Locale.availableIdentifiers.compactMap { Locale(identifier: $0).currencyCode }
+        Array(Set(Locale.availableIdentifiers.compactMap { Locale(identifier: $0).currencyCode }))
     }
 }
 
