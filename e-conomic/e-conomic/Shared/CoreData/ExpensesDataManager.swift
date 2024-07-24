@@ -8,6 +8,8 @@
 import CoreData
 
 protocol ExpensesDataManagerServicing {
+    var fetchResultsController: NSFetchedResultsController<Expense> { get }
+    
     func addExpense(title: String,
                     details: String,
                     total: Double,
@@ -27,7 +29,17 @@ final class ExpensesDataManager: ExpensesDataManagerServicing {
     
     // MARK: - Public properties
     static let shared = ExpensesDataManager()
-    let fetchResultsController: NSFetchedResultsController<Expense>
+    lazy var fetchResultsController: NSFetchedResultsController<Expense> = {
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest() as! NSFetchRequest<Expense>
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: persistentContainer.viewContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+    }()
     
     // MARK: - Initializer
     private init() {
@@ -37,10 +49,6 @@ final class ExpensesDataManager: ExpensesDataManagerServicing {
                 fatalError(error.localizedDescription)
             }
         }
-        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest() as! NSFetchRequest<Expense>
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }
 }
 
