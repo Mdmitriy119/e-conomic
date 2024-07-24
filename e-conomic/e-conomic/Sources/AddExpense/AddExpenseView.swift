@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AddExpenseView: View {
+struct AddExpenseView<VM: AddExpenseViewModelServicing>: View {
     private let theme: AddExpenseViewTheme
-    @ObservedObject private var viewModel: AddExpenseViewModel
+    @ObservedObject private var viewModel: VM
     @Environment(\.presentationMode) var presentationMode
     
     init(theme: AddExpenseViewTheme = AddExpenseViewThemeItem(),
-         viewModel: AddExpenseViewModel = AddExpenseViewModel()) {
+         viewModel: VM = AddExpenseViewModel()) {
         self.theme = theme
         self.viewModel = viewModel
     }
