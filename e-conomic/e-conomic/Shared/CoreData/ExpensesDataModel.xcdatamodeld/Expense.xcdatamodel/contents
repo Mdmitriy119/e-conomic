@@ -5,7 +5,7 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="details" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
-        <attribute name="title" attributeType="String"/>
+        <attribute name="title" attributeType="String" minValueString="1"/>
         <attribute name="total" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
 </model>

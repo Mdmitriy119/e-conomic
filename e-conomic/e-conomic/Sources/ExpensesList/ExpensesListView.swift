@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct ExpensesListView: View {
+struct ExpensesListView<VM: ExpensesListViewModelServicing>: View {
     private let theme: ExpensesListViewTheme
-    @ObservedObject private var viewModel: ExpensesListViewModel
+    @ObservedObject private var viewModel: VM
     
-    init(theme: ExpensesListViewTheme = ExpensesListViewThemeItem(), viewModel: ExpensesListViewModel = ExpensesListViewModel()) {
+    init(theme: ExpensesListViewTheme = ExpensesListViewThemeItem(),
+         viewModel: VM = ExpensesListViewModel()) {
         self.theme = theme
         self.viewModel = viewModel
     }
@@ -19,23 +20,69 @@ struct ExpensesListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0...1000, id: \.self) {
-                    Text("Number: \($0)")
+                ForEach(viewModel.expenses, id: \.self) { expense in
+                    NavigationLink {
+                        ExpenseDetailsView()
+                    } label: {
+                        expenseView(for: expense)
+                    }
                 }
             }
-            .navigationTitle("e-conomic")
+            .navigationTitle(theme.navBarTitle)
             .toolbar {
                 ToolbarItem {
-                    Button {
-                        viewModel.isShowingAddExpenseView.toggle()
-                    } label: {
-                        Text("Add Expense")
-                            .foregroundColor(Color.eConomicPrimary)
-                    }
+                    rightBarButtonView
                 }
             }
             .sheet(isPresented: $viewModel.isShowingAddExpenseView) {
                 AddExpenseView()
+            }
+        }
+        .accentColor(theme.navigationViewAccentColor)
+        .onAppear {
+            viewModel.connect()
+        }
+    }
+}
+
+// MARK: - Sub-components
+private extension ExpensesListView {
+    var rightBarButtonView: some View {
+        Button {
+            viewModel.isShowingAddExpenseView.toggle()
+        } label: {
+            Text(theme.rightBarButtonTitle)
+                .foregroundColor(theme.rightBarButtonTitleColor)
+        }
+    }
+    
+    func expenseView(for expense: Expense) -> some View {
+        HStack {
+            Group {
+                if let photoData = expense.photo,
+                   let uiImage = UIImage(data: Data(referencing: photoData)) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    theme.placeholderImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                }
+            }
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 10)
+            .frame(width: theme.imageSize, height: theme.imageSize)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(expense.title)
+                    .font(theme.titleFont)
+                    .foregroundColor(theme.titleColor)
+                
+                Text("\(expense.total.stringWith2Decimals) \(expense.currency)")
+                    .font(theme.totalFont)
+                    .foregroundColor(theme.totalColor)
             }
         }
     }
