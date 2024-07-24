@@ -12,6 +12,7 @@
 		7253C1452C501C35007E88E7 /* UIImage+NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1442C501C35007E88E7 /* UIImage+NSData.swift */; };
 		7253C1472C5109CB007E88E7 /* Double+StringWith2Decimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1462C5109CB007E88E7 /* Double+StringWith2Decimals.swift */; };
 		7253C1492C51181A007E88E7 /* ExpenseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1482C51181A007E88E7 /* ExpenseDetailsViewModel.swift */; };
+		7253C1532C513031007E88E7 /* e_conomicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1522C513031007E88E7 /* e_conomicTests.swift */; };
 		72EB61DD2C4FE3360099C9F9 /* e_conomicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB61DC2C4FE3360099C9F9 /* e_conomicApp.swift */; };
 		72EB61E12C4FE33B0099C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72EB61E02C4FE33B0099C9F9 /* Assets.xcassets */; };
 		72EB61E42C4FE33B0099C9F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72EB61E32C4FE33B0099C9F9 /* Preview Assets.xcassets */; };
@@ -27,12 +28,24 @@
 		72EB620F2C4FEE4C0099C9F9 /* ExpensesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB620E2C4FEE4C0099C9F9 /* ExpensesDataManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7253C1542C513031007E88E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72EB61D12C4FE3360099C9F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72EB61D82C4FE3360099C9F9;
+			remoteInfo = "e-conomic";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7253C1312C50084A007E88E7 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		7253C1412C5011DE007E88E7 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		7253C1442C501C35007E88E7 /* UIImage+NSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+NSData.swift"; sourceTree = "<group>"; };
 		7253C1462C5109CB007E88E7 /* Double+StringWith2Decimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+StringWith2Decimals.swift"; sourceTree = "<group>"; };
 		7253C1482C51181A007E88E7 /* ExpenseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewModel.swift; sourceTree = "<group>"; };
+		7253C1502C513031007E88E7 /* e-conomicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "e-conomicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7253C1522C513031007E88E7 /* e_conomicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_conomicTests.swift; sourceTree = "<group>"; };
 		72EB61D92C4FE3360099C9F9 /* e-conomic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-conomic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72EB61DC2C4FE3360099C9F9 /* e_conomicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_conomicApp.swift; sourceTree = "<group>"; };
 		72EB61E02C4FE33B0099C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +63,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7253C14D2C513031007E88E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72EB61D62C4FE3360099C9F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,10 +97,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7253C1512C513031007E88E7 /* e-conomicTests */ = {
+			isa = PBXGroup;
+			children = (
+				7253C1522C513031007E88E7 /* e_conomicTests.swift */,
+			);
+			path = "e-conomicTests";
+			sourceTree = "<group>";
+		};
 		72EB61D02C4FE3360099C9F9 = {
 			isa = PBXGroup;
 			children = (
 				72EB61DB2C4FE3360099C9F9 /* e-conomic */,
+				7253C1512C513031007E88E7 /* e-conomicTests */,
 				72EB61DA2C4FE3360099C9F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				72EB61D92C4FE3360099C9F9 /* e-conomic.app */,
+				7253C1502C513031007E88E7 /* e-conomicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +214,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7253C14F2C513031007E88E7 /* e-conomicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7253C1562C513031007E88E7 /* Build configuration list for PBXNativeTarget "e-conomicTests" */;
+			buildPhases = (
+				7253C14C2C513031007E88E7 /* Sources */,
+				7253C14D2C513031007E88E7 /* Frameworks */,
+				7253C14E2C513031007E88E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7253C1552C513031007E88E7 /* PBXTargetDependency */,
+			);
+			name = "e-conomicTests";
+			productName = "e-conomicTests";
+			productReference = 7253C1502C513031007E88E7 /* e-conomicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		72EB61D82C4FE3360099C9F9 /* e-conomic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72EB61E72C4FE33B0099C9F9 /* Build configuration list for PBXNativeTarget "e-conomic" */;
@@ -211,6 +259,10 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					7253C14F2C513031007E88E7 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 72EB61D82C4FE3360099C9F9;
+					};
 					72EB61D82C4FE3360099C9F9 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -230,11 +282,19 @@
 			projectRoot = "";
 			targets = (
 				72EB61D82C4FE3360099C9F9 /* e-conomic */,
+				7253C14F2C513031007E88E7 /* e-conomicTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7253C14E2C513031007E88E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72EB61D72C4FE3360099C9F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +307,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7253C14C2C513031007E88E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7253C1532C513031007E88E7 /* e_conomicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72EB61D52C4FE3360099C9F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,7 +340,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7253C1552C513031007E88E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72EB61D82C4FE3360099C9F9 /* e-conomic */;
+			targetProxy = 7253C1542C513031007E88E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		7253C1572C513031007E88E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CA3A8XT5GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumitrumanea.e-conomicTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/e-conomic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/e-conomic";
+			};
+			name = Debug;
+		};
+		7253C1582C513031007E88E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CA3A8XT5GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumitrumanea.e-conomicTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/e-conomic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/e-conomic";
+			};
+			name = Release;
+		};
 		72EB61E52C4FE33B0099C9F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -457,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7253C1562C513031007E88E7 /* Build configuration list for PBXNativeTarget "e-conomicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7253C1572C513031007E88E7 /* Debug */,
+				7253C1582C513031007E88E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		72EB61D42C4FE3360099C9F9 /* Build configuration list for PBXProject "e-conomic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
