@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Double {
+    var stringWith2Decimals: String {
+        String(format: "%.2f", self)
+    }
+}
