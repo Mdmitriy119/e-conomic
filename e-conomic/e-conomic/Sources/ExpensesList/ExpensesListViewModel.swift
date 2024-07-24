@@ -5,12 +5,45 @@
 //  Created by Dumitru Manea on 23.07.2024.
 //
 
-import Foundation
+import CoreData
 
 protocol ExpensesListViewModelServicing: ObservableObject {
+    var expenses: [Expense] { get set }
     var isShowingAddExpenseView: Bool { get set }
+    
+    func connect()
 }
 
-final class ExpensesListViewModel: ExpensesListViewModelServicing {
+final class ExpensesListViewModel: NSObject, ExpensesListViewModelServicing {
+    // MARK: - Private properties
+    private let dataManager: ExpensesDataManagerServicing
+    
+    // MARK: - Public properties
     @Published var isShowingAddExpenseView: Bool = false
+    @Published var expenses: [Expense] = []
+    
+    init(isShowingAddExpenseView: Bool = false,
+         expenses: [Expense] = [],
+         dataManager: ExpensesDataManagerServicing = ExpensesDataManager.shared) {
+        self.isShowingAddExpenseView = isShowingAddExpenseView
+        self.expenses = expenses
+        self.dataManager = dataManager
+        super.init()
+    }
+}
+ 
+// MARK: - Public methods
+extension ExpensesListViewModel {
+    func connect() {
+        dataManager.fetchResultsController.delegate = self
+        try? dataManager.fetchResultsController.performFetch()
+        expenses = dataManager.fetchResultsController.fetchedObjects ?? []
+    }
+}
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension ExpensesListViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        expenses = controller.fetchedObjects as? [Expense] ?? []
+    }
 }
