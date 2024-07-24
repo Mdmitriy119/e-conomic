@@ -39,7 +39,8 @@ struct AddExpenseView: View {
                 }
             }
             .sheet(isPresented: $viewModel.isShowingPhotoPickerView) {
-                PhotoPickerView(sourceType: .photoLibrary, photoData: $viewModel.photoData)
+                PhotoPickerView(sourceType: .camera, photoData: $viewModel.photoData)
+                    .edgesIgnoringSafeArea(.bottom)
             }
         }
         .onAppear {
@@ -117,7 +118,7 @@ private extension AddExpenseView {
                    let uiImage = UIImage(data: Data(referencing: photoData)) {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                 }
             }
         }
