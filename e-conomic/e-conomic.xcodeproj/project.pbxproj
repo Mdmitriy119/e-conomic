@@ -12,7 +12,7 @@
 		7253C1452C501C35007E88E7 /* UIImage+NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1442C501C35007E88E7 /* UIImage+NSData.swift */; };
 		7253C1472C5109CB007E88E7 /* Double+StringWith2Decimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1462C5109CB007E88E7 /* Double+StringWith2Decimals.swift */; };
 		7253C1492C51181A007E88E7 /* ExpenseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1482C51181A007E88E7 /* ExpenseDetailsViewModel.swift */; };
-		7253C1532C513031007E88E7 /* e_conomicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253C1522C513031007E88E7 /* e_conomicTests.swift */; };
+		72B465AD2C5133560053406B /* AddExpenseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B465AC2C5133560053406B /* AddExpenseViewModelTests.swift */; };
 		72EB61DD2C4FE3360099C9F9 /* e_conomicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EB61DC2C4FE3360099C9F9 /* e_conomicApp.swift */; };
 		72EB61E12C4FE33B0099C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72EB61E02C4FE33B0099C9F9 /* Assets.xcassets */; };
 		72EB61E42C4FE33B0099C9F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72EB61E32C4FE33B0099C9F9 /* Preview Assets.xcassets */; };
@@ -45,7 +45,7 @@
 		7253C1462C5109CB007E88E7 /* Double+StringWith2Decimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+StringWith2Decimals.swift"; sourceTree = "<group>"; };
 		7253C1482C51181A007E88E7 /* ExpenseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewModel.swift; sourceTree = "<group>"; };
 		7253C1502C513031007E88E7 /* e-conomicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "e-conomicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7253C1522C513031007E88E7 /* e_conomicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_conomicTests.swift; sourceTree = "<group>"; };
+		72B465AC2C5133560053406B /* AddExpenseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewModelTests.swift; sourceTree = "<group>"; };
 		72EB61D92C4FE3360099C9F9 /* e-conomic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-conomic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72EB61DC2C4FE3360099C9F9 /* e_conomicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_conomicApp.swift; sourceTree = "<group>"; };
 		72EB61E02C4FE33B0099C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,9 +100,17 @@
 		7253C1512C513031007E88E7 /* e-conomicTests */ = {
 			isa = PBXGroup;
 			children = (
-				7253C1522C513031007E88E7 /* e_conomicTests.swift */,
+				72B465AE2C5133610053406B /* ViewModels */,
 			);
 			path = "e-conomicTests";
+			sourceTree = "<group>";
+		};
+		72B465AE2C5133610053406B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				72B465AC2C5133560053406B /* AddExpenseViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		72EB61D02C4FE3360099C9F9 = {
@@ -311,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7253C1532C513031007E88E7 /* e_conomicTests.swift in Sources */,
+				72B465AD2C5133560053406B /* AddExpenseViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,6 +54,4 @@ final class Expense: NSManagedObject, ExpensePresentable {
         self.date = date
         self.photo = photo
     }
-    
-    
 }

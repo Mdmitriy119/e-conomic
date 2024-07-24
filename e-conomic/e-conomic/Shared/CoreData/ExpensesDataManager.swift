@@ -16,7 +16,7 @@ protocol ExpensesDataManagerServicing {
                     currency: String,
                     date: Date,
                     photo: NSData?)
-    func delete(expense: Expense)
+    func delete(expense: ExpensePresentable)
 }
 
 final class ExpensesDataManager: ExpensesDataManagerServicing {
@@ -80,8 +80,10 @@ extension ExpensesDataManager {
         saveIfNeeded()
     }
     
-    func delete(expense: Expense) {
-        context.delete(expense)
-        saveIfNeeded()
+    func delete(expense: ExpensePresentable) {
+        if let expense = expense as? Expense {
+            context.delete(expense)
+            saveIfNeeded()
+        }
     }
 }
